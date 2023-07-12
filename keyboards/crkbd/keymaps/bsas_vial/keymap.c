@@ -228,20 +228,6 @@ const char keyicon(const uint8_t layer, const uint8_t row, const uint8_t col) {
 		case KC_RBRACKET: icon=0x5D; break;
 		case KC_GRAVE: icon=0x60; break;
 		
-		// F keys
-		case KC_F1: icon=0xD4; break;
-		case KC_F2: icon=0xD5; break;
-		case KC_F3: icon=0xD6; break;
-		case KC_F4: icon=0xD7; break;
-		case KC_F5: icon=0xD8; break;
-		case KC_F6: icon=0xD9; break;
-		case KC_F7: icon=0xDA; break;
-		case KC_F8: icon=0xDB; break;
-		case KC_F9: icon=0xDC; break;
-		case KC_F10: icon=0xDD; break;
-		case KC_F11: icon=0xDE; break;
-		case KC_F12: icon=0xDF; break;
-		
 		// Shifted symbols
 		case KC_RCPC:
 		case LSFT(KC_0): icon=0x29; break;
@@ -282,52 +268,23 @@ const char keyicon(const uint8_t layer, const uint8_t row, const uint8_t col) {
 		case KC_VOLU: icon=0xBE; break;
 		case KC_VOLD: icon=0xBF; break;
 		
+		// F keys
+		case KC_F1 ... KC_F12: icon=(keycode - KC_F1 + 0xD4); break;
+		
 		// letters
-		case KC_A: icon=0x41; break;
-		case KC_B: icon=0x42; break;
-		case KC_C: icon=0x43; break;
-		case KC_D: icon=0x44; break;
-		case KC_E: icon=0x45; break;
-		case KC_F: icon=0x46; break;
-		case KC_G: icon=0x47; break;
-		case KC_H: icon=0x48; break;
-		case KC_I: icon=0x49; break;
-		case KC_J: icon=0x4A; break;
-		case KC_K: icon=0x4B; break;
-		case KC_L: icon=0x4C; break;
-		case KC_M: icon=0x4D; break;
-		case KC_N: icon=0x4E; break;
-		case KC_O: icon=0x4F; break;
-		case KC_P: icon=0x50; break;
-		case KC_Q: icon=0x51; break;
-		case KC_R: icon=0x52; break;
-		case KC_S: icon=0x53; break;
-		case KC_T: icon=0x54; break;
-		case KC_U: icon=0x55; break;
-		case KC_V: icon=0x56; break;
-		case KC_W: icon=0x57; break;
-		case KC_X: icon=0x58; break;
-		case KC_Y: icon=0x59; break;
-		case KC_Z: icon=0x5A; break;
+		case KC_A ... KC_Z: icon=(keycode - KC_A + 0x41); break;
 		
 		// numbers
 		case KC_0: icon=0x30; break;
-		case KC_1: icon=0x31; break;
-		case KC_2: icon=0x32; break;
-		case KC_3: icon=0x33; break;
-		case KC_4: icon=0x34; break;
-		case KC_5: icon=0x35; break;
-		case KC_6: icon=0x36; break;
-		case KC_7: icon=0x37; break;
-		case KC_8: icon=0x38; break;
-		case KC_9: icon=0x39; break;
+		case KC_1 ... KC_9: icon=(keycode - KC_1 + 0x31); break;
 	}
 	
 	return icon;
 }
 
 void oled_render_logo(void) {
-	char lnum = (48 + get_highest_layer(layer_state));
+	short unsigned int idx = get_highest_layer(layer_state);
+	char lnum = (48 + idx);
 	
 	// Original Corne logo with layer number
 	/*
@@ -337,8 +294,6 @@ void oled_render_logo(void) {
         0xc0, 0xc1, 0xc2, 0xc3, 0xc4, 0xc5, 0xc6, 0xc7, 0xc8, 0xc9, 0xca, 0xcb, 0xcc, 0xcd, 0xce, 0xcf, 0xd0, 0xd1, 0xd2, 0xd3, 0xd3,
         0x00};
 	*/
-
-	short unsigned int idx = get_highest_layer(layer_state);
 	
 	// Without thumb cluster + Corne logo with layer number
 	/*
