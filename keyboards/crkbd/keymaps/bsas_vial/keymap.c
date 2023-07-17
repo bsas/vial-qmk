@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  KC_ESC,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   MO(1),  KC_SPC,     KC_ENT,   MO(2),  KC_RALT
+                                          KC_LGUI,   LOWER,  KC_SPC,     KC_ENT,   RAISE, KC_RALT
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -191,45 +191,45 @@ const char keyicon(const uint8_t layer, const uint8_t row, const uint8_t col) {
 		// Mods
 		case KC_TAB: icon=0x10; break;
 		case KC_ESC:
-		case KC_GESC: icon=0x1C; break;
-		case KC_BSPACE: icon=0x11; break;
-		case KC_PSCREEN: icon=0x9E; break;
-		case KC_CAPSLOCK:
-		case KC_LSHIFT:
-		case KC_RSHIFT: icon=0x1E; break;
+		case QK_GESC: icon=0x1C; break;
+		case KC_BACKSPACE: icon=0x11; break;
+		case KC_PRINT_SCREEN: icon=0x9E; break;
+		case KC_CAPS_LOCK:
+		case KC_LEFT_SHIFT:
+		case KC_RIGHT_SHIFT: icon=0x1E; break;
 		case KC_ENTER: 
-		case KC_SFTENT: icon=0x94; break;
+		case SC_SENT: icon=0x94; break;
 		case KC_SPACE: icon=0x16; break;
 		case KC_RGUI:
 		case KC_LGUI: icon=0x77; break;
-		case KC_RALT:
-		case KC_LALT: icon=0x61; break;
-		case KC_RCTRL:
-		case KC_LCTRL: icon=0x63; break;
+		case KC_RIGHT_ALT:
+		case KC_LEFT_ALT: icon=0x61; break;
+		case KC_RIGHT_CTRL:
+		case KC_LEFT_CTRL: icon=0x63; break;
 		
 		// Navigation
 		case KC_INSERT: icon=0x69; break;
 		case KC_DELETE: icon=0x64; break;
 		case KC_HOME: icon=0x68; break;
 		case KC_END: icon=0x65; break;
-		case KC_PGUP: icon=0x1E; break;
-		case KC_PGDOWN: icon=0x1F; break;
+		case KC_PAGE_UP: icon=0x1E; break;
+		case KC_PAGE_DOWN: icon=0x1F; break;
 		
 		// Symbols
 		case KC_COMMA: icon=0x2C; break;
 		case KC_DOT: icon=0x2E; break;
 		case KC_SLASH: icon=0x2F; break;
-		case KC_BSLASH: icon=0x5C; break;
-		case KC_SCOLON: icon=0x3B; break;
+		case KC_BACKSLASH: icon=0x5C; break;
+		case KC_SEMICOLON: icon=0x3B; break;
 		case KC_MINUS: icon=0x2D; break;
 		case KC_QUOTE: icon=0x27; break;
 		case KC_EQUAL: icon=0x3D; break;
-		case KC_LBRACKET: icon=0x5B; break;
-		case KC_RBRACKET: icon=0x5D; break;
+		case KC_LEFT_BRACKET: icon=0x5B; break;
+		case KC_RIGHT_BRACKET: icon=0x5D; break;
 		case KC_GRAVE: icon=0x60; break;
 		
 		// Shifted symbols
-		case KC_RCPC:
+		case SC_RCPC:
 		case LSFT(KC_0): icon=0x29; break;
 		case LSFT(KC_1): icon=0x21; break;
 		case LSFT(KC_2): icon=0x40; break;
@@ -239,13 +239,13 @@ const char keyicon(const uint8_t layer, const uint8_t row, const uint8_t col) {
 		case LSFT(KC_6): icon=0x5E; break;
 		case LSFT(KC_7): icon=0x26; break;
 		case LSFT(KC_8): icon=0x2A; break;
-		case KC_LAPO:
+		case SC_LAPO:
 		case LSFT(KC_9): icon=0x28; break;
 		case LSFT(KC_MINUS): icon=0x5F; break;
 		case LSFT(KC_EQUAL): icon=0x2B; break;
-		case LSFT(KC_BSLASH): icon=0x7C; break;
-		case LSFT(KC_LBRACKET): icon=0x7B; break;
-		case LSFT(KC_RBRACKET): icon=0x7D; break;
+		case LSFT(KC_BACKSLASH): icon=0x7C; break;
+		case LSFT(KC_LEFT_BRACKET): icon=0x7B; break;
+		case LSFT(KC_RIGHT_BRACKET): icon=0x7D; break;
 		case LSFT(KC_GRAVE): icon=0x22; break;
 		
 		// Arrows
